@@ -434,6 +434,11 @@ class AggregatedViewFilterSet(OrFilterSetMixin, GeoFilterSet):
         fields = ["management_name", "management_name_secondary"]
         return self.str_or_lookup(queryset, fields, value, lookup_expr="icontains")
 
+    def filter_queryset(self, queryset):
+        for name, value in self.form.cleaned_data.items():
+            queryset = self.filters[name].filter(queryset, value)
+        return queryset
+
 
 class BaseSEFilterSet(AggregatedViewFilterSet):
     id = BaseInFilter(method="id_lookup")

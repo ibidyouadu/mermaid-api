@@ -1,7 +1,8 @@
 from typing import Any, Dict, Optional
 
 from django.db.models import NOT_PROVIDED, ForeignObject  # type: ignore
-from django.db.models.sql.datastructures import BaseTable  # type: ignore
+from .djangobase.datastructures_22 import BaseTable
+# from django.db.models.sql.datastructures import BaseTable  # type: ignore
 
 
 class SQLTableArg:
