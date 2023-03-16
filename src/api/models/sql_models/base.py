@@ -189,7 +189,7 @@ sample_event_sql_template = f"""
         LEFT JOIN parties ON m.id = parties.management_id
         LEFT JOIN site_covariates ON site.id = site_covariates.site_id
     WHERE
-        <__sql_table_args__>
+        <<__sql_table_args__>>
 """
 
 

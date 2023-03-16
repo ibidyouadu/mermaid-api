@@ -1,5 +1,6 @@
 from api.models import BeltFishObsSQLModel, SampleEvent
 from api.utils.timer import Timer
+from api.utils.summary_cache import update_summary_cache
 
 # from scalene import profile
 
@@ -25,14 +26,13 @@ def test2():
         )
 
 def run():
+    with Timer("update summary cache"):
+        update_summary_cache(pk)
     
-    with Timer("Test1"):
-        data1 = list(test1())
-        print(len(data1))
+    # with Timer("Test1"):
+    #     data1 = list(test1())
+    #     print(len(data1))
     
     # with Timer("Test2"):
-    #     data2 = []
-    #     cnt = 0
-    #     for t in test2():
-    #         cnt = len(list(t))
+    #     cnt = sum(len(list(t)) for t in test2())
     #     print(cnt)
